@@ -1,9 +1,31 @@
-import React, { PropsWithChildren } from "react";
+"use client";
+
+import { useRouter } from "next/navigation";
+import React, { PropsWithChildren, useEffect } from "react";
 
 type Props = PropsWithChildren;
 
 const AuthLayout = ({ children }: Props) => {
-  return <div>{children}</div>;
+  const router = useRouter();
+  useEffect(() => {
+    const user = localStorage.getItem("dm-user");
+    if (user) {
+      router.replace("/dashboard");
+    }
+  }, []);
+  /**
+   * Note: In case of server-side rendering, redirecting from a layout
+   */
+  // const isLoggedIn = await doesUserLoggedIn();
+  // if (isLoggedIn) {
+  //   redirect("/dashboard");
+  // }
+
+  return (
+    <main className="flex h-dvh w-full items-center justify-center md:h-screen">
+      {children}
+    </main>
+  );
 };
 
 export default AuthLayout;
