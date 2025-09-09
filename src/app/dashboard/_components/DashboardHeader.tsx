@@ -1,5 +1,5 @@
 "use client";
-import { User } from "@/@types";
+
 import { logout } from "@/actions";
 import {
   Avatar,

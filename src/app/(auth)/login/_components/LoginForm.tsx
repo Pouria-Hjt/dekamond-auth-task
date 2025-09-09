@@ -42,7 +42,7 @@ const LoginForm = () => {
       localStorage.setItem("dm-user", JSON.stringify(user));
       toast.success("ورود موفقیت آمیز بود.");
       router.push("/dashboard");
-    } catch (error) {
+    } catch {
       toast.error("خطایی در ورود رخ داد. لطفا دوباره تلاش کنید.");
     } finally {
       setIsLoading(false);

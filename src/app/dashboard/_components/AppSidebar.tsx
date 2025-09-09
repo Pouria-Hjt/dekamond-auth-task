@@ -11,7 +11,6 @@ import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
 const items = [
   {
     title: "خانه",
@@ -39,7 +38,7 @@ const items = [
     icon: Settings,
   },
 ];
-const AppSidebar = (props: Props) => {
+const AppSidebar = () => {
   return (
     <Sidebar side="right" variant="sidebar">
       <SidebarContent>
