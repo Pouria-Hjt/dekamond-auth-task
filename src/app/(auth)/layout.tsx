@@ -1,5 +1,6 @@
 "use client";
 
+import { doesUserLoggedIn } from "@/lib";
 import { useRouter } from "next/navigation";
 import React, { PropsWithChildren, useEffect } from "react";
 
@@ -8,8 +9,7 @@ type Props = PropsWithChildren;
 const AuthLayout = ({ children }: Props) => {
   const router = useRouter();
   useEffect(() => {
-    const user = localStorage.getItem("dm-user");
-    if (user) {
+    if (doesUserLoggedIn()) {
       router.replace("/dashboard");
     }
   }, []);

@@ -26,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="fa/IR" dir="rtl">
       <body
+        dir="rtl"
         className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
       >
         {children}

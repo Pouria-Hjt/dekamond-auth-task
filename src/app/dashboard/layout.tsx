@@ -1,6 +1,9 @@
 "use client";
+import { SidebarProvider } from "@/components/ui";
 import { useRouter } from "next/navigation";
 import React, { PropsWithChildren, useEffect } from "react";
+import { AppSidebar, DashboardHeader } from "./_components";
+import { doesUserLoggedIn } from "@/lib";
 
 type Props = PropsWithChildren;
 
@@ -10,17 +13,23 @@ const DashboardLayout = ({ children }: Props) => {
   //   if (!isLoggedIn) {
   //     redirect("/login");
   //   }
-
   const router = useRouter();
 
   useEffect(() => {
-    const user = localStorage.getItem("dm-user");
-    if (!user) {
+    if (!doesUserLoggedIn()) {
       router.replace("/login");
     }
   }, []);
 
-  return <div>{children}</div>;
+  return (
+    <SidebarProvider>
+      <AppSidebar />
+      <main className="w-full space-y-4 p-4">
+        <DashboardHeader />
+        {children}
+      </main>
+    </SidebarProvider>
+  );
 };
 
 export default DashboardLayout;
